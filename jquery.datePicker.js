@@ -47,7 +47,7 @@
             $container.find('td.selected').removeClass('selected');
             $cell.addClass('selected');
             var date = new Date(currentDate.getFullYear(), currentDate.getMonth(), $cell.text());
-            $input.val(self.format(date));
+            $input.val(self.format(date)).change();
             if (options.selected != null) { options.selected(selected); } 
             self.hide(); 
           }
