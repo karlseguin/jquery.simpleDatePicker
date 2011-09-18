@@ -1,0 +1,1 @@
+This is a simple and clean jQuery date picker. The goal is for it to be minimalistic and small. It can be shrank to less than 3KB uses Google Closure and gzip's down to ~1.2KB. Tested using jQuery 1.6.2 and Chrome 14, FF6 and IE9. It hopefully works in some older browsers as well.
