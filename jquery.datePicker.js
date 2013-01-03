@@ -12,7 +12,16 @@
       var $container = currentDate = mode = null;
       var self = {
         initialize: function() {
-          $input.click(function() { self.show(); return false; }).keydown(function(e){ if (e.keyCode == 13) { self.entered(); return false; }});
+          $input.click(function (event) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            }
+            if (window.event) {
+              window.event.cancelBubble = true;
+            }
+            self.show();
+            return false;
+          }).keydown(function(e){ if (e.keyCode == 13) { self.entered(); return false; }});
           $(document).keydown(function(e) { if (e.keyCode == 27) { self.hide(); }}).click(self.hide);
           $container = self.initializeContainer().hide()
             .append(self.buildMonth(new Date()))
