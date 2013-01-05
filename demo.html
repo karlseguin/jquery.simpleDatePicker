@@ -8,9 +8,14 @@
 <body>
 
   <input type="text" id="date" />
+  <input type="button" id="c" />
 
 <script type="text/javascript">
 $(document).ready(function() {
   $('#date').datePicker();
+  $('#c').click(function() {
+    $('#date').datePicker({command: 'toggle'})
+    return false;
+  })
 });
 </script>

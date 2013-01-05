@@ -1,5 +1,11 @@
 (function($){
   $.fn.datePicker = function(opts) {
+
+    if (opts && opts.command == 'toggle') {
+      this.get(0).datePicker.toggle();
+      return this;
+    }
+
     var defaults = {selected: null, minimumDate: null, maximumDate: null};
     var months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
     var abbreviations = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec');
@@ -12,16 +18,7 @@
       var $container = currentDate = mode = null;
       var self = {
         initialize: function() {
-          $input.click(function (event) {
-            if (event.stopPropagation) {
-              event.stopPropagation();
-            }
-            if (window.event) {
-              window.event.cancelBubble = true;
-            }
-            self.show();
-            return false;
-          }).keydown(function(e){ if (e.keyCode == 13) { self.entered(); return false; }});
+          $input.click(function (event) {self.show(); return false;}).keydown(function(e){ if (e.keyCode == 13) { self.entered(); return false; }});
           $(document).keydown(function(e) { if (e.keyCode == 27) { self.hide(); }}).click(self.hide);
           $container = self.initializeContainer().hide()
             .append(self.buildMonth(new Date()))
@@ -34,6 +31,7 @@
             .click(function(){return false;});
         },
         parseDate: function(value) { return new Date(value); },
+        toggle: function() { $container.is(':visible') ? self.hide() : self.show(); },
         show: function() { $container.show(); },
         hide: function() { $container.hide(); },
         loadPrevious: function() {
