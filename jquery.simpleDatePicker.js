@@ -1,8 +1,8 @@
 (function($){
-  $.fn.datePicker = function(opts) {
+  $.fn.simpleDatePicker = function(opts) {
 
     if (opts && opts.command == 'toggle') {
-      this.get(0).datePicker.toggle();
+      this.get(0).simpleDatePicker.toggle();
       return this;
     }
 
@@ -12,7 +12,7 @@
     var daySelector = 'td:not(.m):not(:empty)';
 
     return this.each(function() {
-      if (this.datePicker) { return false; }
+      if (this.simpleDatePicker) { return false; }
       var options = $.extend({}, defaults, opts);
       var $input = $(this);
       var $container = currentDate = mode = null;
@@ -140,7 +140,7 @@
           return months[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear();
         }
       };
-      this.datePicker = self;
+      this.simpleDatePicker = self;
       self.initialize();
     });
   }

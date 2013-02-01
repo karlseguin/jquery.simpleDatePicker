@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <link href="datePicker.css" media="screen" rel="stylesheet" type="text/css" />
+   <link href="simpleDatePicker.css" media="screen" rel="stylesheet" type="text/css" />
    <script type="text/javascript" src="jquery.min.js"></script>
-   <script type="text/javascript" src="jquery.datePicker.js"></script>
+   <script type="text/javascript" src="jquery.simpleDatePicker.js"></script>
 </head>
 <body>
 
@@ -12,9 +12,9 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#date').datePicker();
+  $('#date').simpleDatePicker();
   $('#c').click(function() {
-    $('#date').datePicker({command: 'toggle'})
+    $('#date').simpleDatePicker({command: 'toggle'})
     return false;
   })
 });
