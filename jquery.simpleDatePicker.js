@@ -60,8 +60,9 @@
           }
         },
         entered: function() {
-          var date = self.parseDate($input.val().replace(/^\s*/, '').replace(/\s*$/, ''));
-          if (date == null) { return; }
+          var date = self.parseDate($input.val().replace(/^\s*|\s*$/g, ''));
+  	  var isValidDate = (new Date(date)).valueOf().toString() !== "NaN";
+          if (date == null || !isValidDate) { return; }
           $container.empty().append(self.buildMonth(date)).find(daySelector).eq(date.getDate()-1).click();
         },
         initializeContainer: function() {
