@@ -10,14 +10,16 @@
     var months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
     var abbreviations = new Array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec');
     var daySelector = 'td:not(.m):not(:empty)';
-  defaults.format = function(date) {
-	  return months[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear();
-	};
+    defaults.format = function(date) {
+      return months[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear();
+    };
     return this.each(function() {
       if (this.simpleDatePicker) { return false; }
       var options = $.extend({}, defaults, opts);
       var $input = $(this);
-      var $container = currentDate = mode = null;
+      var $container = null,
+      var currentDate = new Date(),
+      var mode = null;
       var self = {
         initialize: function() {
           $input.click(function (event) {self.show(); return false;}).keydown(function(e){ if (e.keyCode == 13) { self.entered(); return false; }});
