@@ -17,8 +17,8 @@
       if (this.simpleDatePicker) { return false; }
       var options = $.extend({}, defaults, opts);
       var $input = $(this);
-      var $container = null,
-      var currentDate = new Date(),
+      var $container = null;
+      var currentDate = new Date();
       var mode = null;
       var self = {
         initialize: function() {
